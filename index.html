@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annual Tech Conference Registration</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    header {
+        background-color: #1a1a1a;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+    header h1 {
+        margin: 0;
+    }
+    section {
+        padding: 20px;
+        max-width: 900px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    #event-info {
+        background-color: #e0f7fa; /* light cyan */
+    }
+    #registration-form {
+        background-color: #fff3e0; /* light orange */
+    }
+    #registered-participants {
+        background-color: #f1f8e9; /* light green */
+    }
+    section h2 {
+        margin-top: 0;
+    }
+    form label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
+    form input[type="radio"], form input[type="checkbox"] {
+        width: auto;
+        margin-right: 5px;
+    }
+    form .form-section {
+        margin-bottom: 15px;
+    }
+    form button {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+    form button:hover {
+        background-color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    table, th, td {
+        border: 1px solid #1a1a1a;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    footer {
+        background-color: #1a1a1a;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Annual Tech Conference 2026 Registration</h1>
+</header>
+
+<section id="event-info">
+    <h2>About the Event</h2>
+    <p>
+        The Annual Tech Conference 2026 is a premier gathering for technology enthusiasts, professionals, and students to explore the latest trends in technology. This conference provides an opportunity to attend interactive workshops, learn from expert speakers, and participate in hands-on sessions that cover topics like AI, web development, cloud computing, and innovative software solutions. Whether you’re looking to expand your knowledge, network with industry leaders, or get inspired for your next project, this event will guide you step by step in the fast-moving world of technology.
+    </p>
+    <p><strong>Date:</strong> March 10, 2026</p>
+    <p><strong>Time:</strong> 9.00a.m-4.00p.m</p>
+    <p><strong>Location:</strong> Grand Hall, City Center</p>
+</section>
+
+<section id="registration-form">
+    <h2>Registration Form</h2>
+    <form id="eventForm">
+        <div class="form-section">
+            <h3>Personal Information</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female" required> Female
+            <input type="radio" name="gender" value="Other" required> Other
+        </div>
+
+        <div class="form-section">
+            <h3>Event Preferences</h3>
+            <label for="eventMode">Event Mode:</label>
+            <select id="eventMode" required>
+                <option value="">Select Mode</option>
+                <option value="Offline">Offline</option>
+                <option value="Online">Online</option>
+            </select>
+
+            <label for="sessions">Preferred Sessions:</label>
+            <textarea id="sessions" placeholder="Write your preferred sessions..." rows="3"></textarea>
+        </div>
+
+        <div class="form-section">
+            <h3>Declaration</h3>
+            <input type="checkbox" id="declaration" required> I declare that the information provided is accurate.
+        </div>
+
+        <button type="submit">Submit Registration</button>
+    </form>
+</section>
+
+<section id="registered-participants">
+    <h2>Registered Participants</h2>
+    <table id="participantsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Event Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Participants will appear here -->
+        </tbody>
+    </table>
+</section>
+
+<footer>
+    <p>Contact Email: support@example.com | Help Desk: +91 9876543210 | Support Timings: 9 AM - 6 PM</p>
+    <p>&copy; 2026 Annual Tech Conference. All rights reserved.</p>
+</footer>
+
+<script>
+    const form = document.getElementById('eventForm');
+    const tableBody = document.querySelector('#participantsTable tbody');
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const eventMode = document.getElementById('eventMode').value;
+
+        // Add participant to table dynamically
+        const newRow = tableBody.insertRow();
+        newRow.insertCell(0).innerText = name;
+        newRow.insertCell(1).innerText = email;
+        newRow.insertCell(2).innerText = phone;
+        newRow.insertCell(3).innerText = eventMode;
+
+        // Clear form after submission
+        form.reset();
+
+        // Optional alert
+        alert("Registration successful! 🎉");
+    });
+</script>
+
+</body>
+</html>
